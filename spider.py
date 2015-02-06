@@ -9,7 +9,7 @@ from pushover import Pushover
 class Spider:
 	index_url = 'http://www.ppomppu.co.kr/zboard/zboard.php?id=phone'
 	board_base_url = 'http://www.ppomppu.co.kr/zboard/'
-	keywords = ['band']
+	keywords = ['Band', 'band']
 
 	def main(self):
 		
