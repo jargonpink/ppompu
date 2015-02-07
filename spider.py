@@ -17,9 +17,9 @@ class Spider:
 				post = self.postExtractor(link)
 
 				if db.session.query(Post.id).filter(Post.title==post['title'], Post.content==post['content']).count() > 0:
-					print 'Skip: ' + post['title']
+					print 'Skip: ' + post['link']
 				else:
-					print 'Add: ' + post['title']
+					print 'Add: ' + post['link']
 					self.addPost(post)
 			except Exception as e:
 				print 'Exception: ' + str(e)
