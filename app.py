@@ -15,7 +15,7 @@ def index():
 	from models import Post
 	posts = db.session.query(Post)\
 			.filter(Post.content.like('%' + keyword + '%'))\
-			.order_by(Post.created_at.desc())[offset:limit]
+			.order_by(Post.crawled_at.desc())[offset:limit]
 
 	return render_template("index.html", posts=posts, keyword=keyword)
 

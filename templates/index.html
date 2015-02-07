@@ -15,13 +15,13 @@
 <table class="table">
 	<tr>
 		<td>Title</td>
-		<td>Created</td>
+		<td>Crawled Date</td>
 	</tr>
 
 	{% for post in posts %}
 	<tr>
 		<td><a href="{{ post.link }}">{{ post.title }}</a></td>
-		<td>{{ post.created_at }}</td>
+		<td>{{ post.crawled_at }}</td>
 	</tr>
 	{% endfor %}
 </table>
