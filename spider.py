@@ -7,12 +7,12 @@ import re
 from pushover import Pushover
 
 class Spider:
-	index_url = 'http://www.ppomppu.co.kr/zboard/zboard.php?id=phone'
 	board_base_url = 'http://www.ppomppu.co.kr/zboard/'
-	keywords = ['Band', 'band']
+	board_index_url = 'http://www.ppomppu.co.kr/zboard/zboard.php?id=phone'
+	keywords = ['Band', 'band', '밴드']
 
 	def main(self):
-		for link in self.getPostLinks(self.index_url):
+		for link in self.getPostLinks(self.board_index_url):
 			try:
 				post = self.postExtractor(link)
 
