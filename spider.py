@@ -12,15 +12,17 @@ class Spider:
 	keywords = ['Band', 'band']
 
 	def main(self):
-		
 		for link in self.getPostLinks(self.index_url):
-			post = self.postExtractor(link)
+			try:
+				post = self.postExtractor(link)
 
-			if 0 < db.session.query(Post.id).filter(Post.title==post['title'], Post.content==post['content']).count():
-				print 'Skip: ' + post['title']
-			else:
-				print 'Add: ' + post['title']
-				self.addPost(post)
+				if db.session.query(Post.id).filter(Post.title==post['title'], Post.content==post['content']).count() > 0:
+					print 'Skip: ' + post['title']
+				else:
+					print 'Add: ' + post['title']
+					self.addPost(post)
+			except Exception as e:
+				print 'Exception: ' + str(e)
 
 	def addPost(self, post):
 		self.keywordChecker(post)
@@ -55,7 +57,7 @@ class Spider:
 		url = self.board_base_url + url
 		post = dict()
 		r = requests.get(url);
-		s = BeautifulSoup(r.content)
+		s = BeautifulSoup(unicode(r.content, 'cp949').encode('utf-8'))
 
 		post['link'] = url
 		post['title'] = s.find('font', class_='view_title2').text
