@@ -20,7 +20,7 @@
 
 	{% for post in posts %}
 	<tr>
-		<td><a href="{{ post.link }}">{{ post.title }}</a></td>
+		<td><a href="{{ post.link }}" target="_blank">{{ post.title }}</a></td>
 		<td>{{ post.crawled_at }}</td>
 	</tr>
 	{% endfor %}
