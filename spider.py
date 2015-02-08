@@ -12,7 +12,7 @@ class Spider:
 	keywords = ['Band', 'band', '밴드']
 
 	def main(self):
-		for link in self.getPostLinks(self.board_index_url):
+		for link in reversed(self.getPostLinks(self.board_index_url)):
 			try:
 				post = self.postExtractor(link)
 
