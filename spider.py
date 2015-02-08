@@ -12,8 +12,8 @@ class Spider:
 	keywords = ['Band', 'band', '밴드']
 
 	def main(self):
-		try:
-			for link in self.getPostLinks(self.board_index_url):
+		for link in self.getPostLinks(self.board_index_url):
+			try:
 				post = self.postExtractor(link)
 
 				if db.session.query(Post.id).filter(Post.title==post['title'], Post.content==post['content']).count() > 0:
@@ -21,8 +21,8 @@ class Spider:
 				else:
 					print 'Add: ' + post['link']
 					self.addPost(post)
-		except Exception as e:
-			print 'Exception: ' + str(e)
+			except Exception as e:
+				print 'Exception: ' + str(e)
 
 	def addPost(self, post):
 		self.keywordChecker(post)
