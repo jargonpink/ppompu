@@ -11,16 +11,14 @@ class Pushover:
 		payload = {
 			'token': PUSHOVER_API_KEY,
 			'title': title,
+			'user': PUSHOVER_GROUP_KEY,
 			'message': message
 		}
 
 		if url:
 			payload['url'] = url
 
-		for userKey in PUSHOVER_USER_KEYS:
-			payload['user'] = userKey
-
-			r = requests.post(PUSHOVER_API_HOST, data=payload)
+		r = requests.post(PUSHOVER_API_HOST, data=payload)
 
 if __name__ == "__main__":
 	pushover = Pushover()
